@@ -1,0 +1,26 @@
+.btn-up {
+  position: fixed;
+  right: 10%;
+  bottom: 10%;
+  cursor: pointer;
+}
+
+// react-transition-group
+
+.btn-up-enter {
+  opacity: 0;
+}
+
+.btn-up-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.btn-up-exit {
+  opacity: 1;
+}
+
+.btn-up-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}

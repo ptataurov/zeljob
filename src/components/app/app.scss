@@ -1,0 +1,62 @@
+@import '../../assets/scss/mixins.scss';
+
+.app {
+  min-height: 100vh;
+}
+
+// mixes
+.app__header {
+  margin-top: 96px;
+  margin-bottom: 48px;
+
+  @include mq-sm {
+    margin-top: 24px;
+    margin-bottom: 32px;
+  }
+}
+
+.app__search-panel {
+  margin-bottom: 104px;
+
+  @include mq-sm {
+    margin-bottom: 80px;
+  }
+}
+
+.app__vacancy-list {
+  margin-top: 32px;
+  margin-bottom: 104px;
+  @include mq-sm {
+    margin-bottom: 64px;
+  }
+}
+
+.app__telegram-block {
+  margin-bottom: 104px;
+
+  @include mq-sm {
+    margin-bottom: 64px;
+  }
+}
+
+.app__footer {
+  margin-top: auto;
+  margin-bottom: 24px;
+}
+
+.app__vacancy-page {
+  margin: 3rem 0;
+
+  @include mq-sm {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.app__spinner {
+  margin: 64px 0;
+}
+
+.app__not-found {
+  margin: auto;
+}

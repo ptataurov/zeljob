@@ -1,0 +1,26 @@
+.vacancy__list {
+  padding-left: 8px;
+  list-style: none;
+}
+
+.vacancy__list-item {
+  display: flex;
+  align-items: center;
+
+  &:before {
+    width: 8px;
+    height: 8px;
+    margin-right: 16px;
+    background-color: #1071ff;
+    border-radius: 50%;
+    content: '';
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+
+.vacancy__list-item-span {
+  flex: 1;
+}

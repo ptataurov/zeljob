@@ -1,0 +1,23 @@
+@import './mixins.scss';
+@import './fonst.scss';
+
+* {
+  transition: all 100ms;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fafafa;
+}
+
+.pre-wrap {
+  white-space: pre-wrap;
+}
+
+// rewrite bootstrap
+
+.form-control {
+  &::placeholder {
+    color: lighten(#495057, 30%);
+  }
+}

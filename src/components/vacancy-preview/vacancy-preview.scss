@@ -1,0 +1,12 @@
+.vacancy-preview {
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(#000, 0.1);
+    transform: translateY(-4px);
+    cursor: pointer;
+    transition: all 300ms;
+  }
+}

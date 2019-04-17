@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://zeljob.ru/sitemap.xml

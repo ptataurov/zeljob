@@ -1,0 +1,41 @@
+.publish-form__list {
+  margin-bottom: 24px;
+  padding-left: 8px;
+  list-style: none;
+}
+
+.publish-form__list-item {
+  display: flex;
+  align-items: center;
+
+  &:before {
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    background-color: #1071ff;
+    border-radius: 50%;
+    content: '';
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+
+.publish-form__list-item-input {
+  flex: 1;
+  border-color: transparent !important;
+  transition: none !important;
+
+  &:hover {
+    border: 1px solid #ced4da !important;
+  }
+
+  &--active {
+    border: 1px solid #ced4da !important;
+  }
+}
+
+.publish-form__list-item-span {
+  flex: 1;
+}

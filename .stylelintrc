@@ -1,0 +1,7 @@
+{
+    "extends": "stylelint-config-rational-order",
+    "rules": {
+        "color-hex-case": "lower",
+        "color-hex-length": "short"
+    }
+}
