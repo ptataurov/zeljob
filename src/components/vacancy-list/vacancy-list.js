@@ -9,14 +9,12 @@ import Spinner from '../spinner/spinner'
 import { ReactComponent as FindEmoji } from './find-emoji.svg'
 
 const getVacancyCountStr = count => {
-  switch (count) {
-    case 1:
-      return '1 вакансия'
-    case count <= 4 && count !== 0:
-      return `${count} вакансии`
-    default:
-      return `${count} вакансий`
-  }
+  const lastDigit = Number(count.toString().slice(-1))
+
+  if (lastDigit === 1) return `${count} вакансия`
+  if (lastDigit <= 4 && lastDigit !== 0) return `${count} вакансии`
+
+  return `${count} вакансий`
 }
 
 class VacancyList extends Component {
@@ -88,14 +86,22 @@ class VacancyList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  vacancyList: state.vacancyList,
-  currentPage: state.currentPage,
-  loading: state.loading,
-  vacancyCount: state.vacancyCount,
-  searchInput: state.searchInput,
-  totalPages: state.totalPages,
-  top: state.scrollTopListPosition
+const mapStateToProps = ({
+  vacancyList,
+  currentPage,
+  loading,
+  vacancyCount,
+  searchInput,
+  totalPages,
+  scrollTopListPosition
+}) => ({
+  vacancyList,
+  currentPage,
+  loading,
+  vacancyCount,
+  searchInput,
+  totalPages,
+  top: scrollTopListPosition
 })
 
 const mapDispatchToProps = {

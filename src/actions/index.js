@@ -5,23 +5,23 @@ import algoliasearch from 'algoliasearch'
 const client = algoliasearch('NVB3R0X6NL', '99ae420fbacd7e181b846392989eee03')
 const index = client.initIndex('zeljob_vacancies')
 
-const VACANCY_LIST_REQUEST = 'VACANCY_LIST_REQUEST'
+export const VACANCY_LIST_REQUEST = 'VACANCY_LIST_REQUEST'
 const vacancyListRequest = () => ({
   type: VACANCY_LIST_REQUEST
 })
 
-const VACANCY_LIST_SUCCESS = 'VACANCY_LIST_SUCCESS'
+export const VACANCY_LIST_SUCCESS = 'VACANCY_LIST_SUCCESS'
 const vacancyListSuccess = vacancyList => ({
   type: VACANCY_LIST_SUCCESS,
   payload: vacancyList
 })
 
-const VACANCY_PUBLISH_SUCCESS = 'VACANCY_PUBLISH_SUCCESS'
+export const VACANCY_PUBLISH_SUCCESS = 'VACANCY_PUBLISH_SUCCESS'
 const vacancyPublishSuccess = () => ({
   type: VACANCY_PUBLISH_SUCCESS
 })
 
-const VACANCY_LIST_FAILURE = 'VACANCY_LIST_FAILURE'
+export const VACANCY_LIST_FAILURE = 'VACANCY_LIST_FAILURE'
 const vacancyListFailure = () => ({
   type: VACANCY_LIST_FAILURE
 })
@@ -46,7 +46,7 @@ export const onSearch = (e, str) => async dispatch => {
   }
 }
 
-const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE'
+export const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE'
 const updateCurrentPage = page => ({
   type: UPDATE_CURRENT_PAGE,
   payload: page
@@ -58,28 +58,33 @@ export const updateScrollTopListPosition = top => ({
   payload: top
 })
 
-const UPDATE_TOTAL_PAGES = 'UPDATE_TOTAL_PAGES'
+export const UPDATE_TOTAL_PAGES = 'UPDATE_TOTAL_PAGES'
 const updateTotalPages = page => ({
   type: UPDATE_TOTAL_PAGES,
   payload: page
 })
 
-const UPDATE_VACANCY_LIST = 'UPDATE_VACANCY_LIST'
+export const UPDATE_VACANCY_LIST = 'UPDATE_VACANCY_LIST'
 const updateVacancyList = vacancyList => ({
   type: UPDATE_VACANCY_LIST,
   payload: vacancyList
 })
 
-const SET_VACANCY_COUNT = 'SET_VACANCY_COUNT'
+export const SET_VACANCY_COUNT = 'SET_VACANCY_COUNT'
 const setVacancyCount = count => ({
   type: SET_VACANCY_COUNT,
   payload: count
 })
 
-const SET_SEARCH_INPUT = 'SET_SEARCH_INPUT'
+export const SET_SEARCH_INPUT = 'SET_SEARCH_INPUT'
 const setSearchInput = str => ({
   type: SET_SEARCH_INPUT,
   payload: str
+})
+
+export const SET_LIST_LOADED = 'SET_LIST_LOADED'
+export const setListLoaded = () => ({
+  type: SET_LIST_LOADED
 })
 
 export const fetchNextPage = (str, page) => async dispatch => {
@@ -104,7 +109,6 @@ export const fetchVacancyList = () => async dispatch => {
 
   try {
     const res = await index.search()
-
     const vacancyList = await res.hits
 
     dispatch(setVacancyCount(res.nbHits))
@@ -131,11 +135,6 @@ export const fetchVacancyPublish = vacancy => async dispatch => {
   }
 }
 
-export const SET_LIST_LOADED = 'SET_LIST_LOADED'
-export const setListLoaded = () => ({
-  type: SET_LIST_LOADED
-})
-
 export const fetchVacancy = id => async dispatch => {
   dispatch(vacancyListRequest())
   try {
@@ -146,7 +145,7 @@ export const fetchVacancy = id => async dispatch => {
       .get()
     const vacancy = doc.data()
 
-    dispatch(vacancyListSuccess([vacancy]))
+    dispatch(updateVacancyList([vacancy]))
   } catch (e) {
     dispatch(vacancyListFailure())
   }

@@ -9,7 +9,7 @@ const VacancyContacts = ({ email, listLoaded, position }) => {
         <h5 className="card-header">Контакты</h5>
         <div className="card-body">
           <p className="card-text mb-0">Резюме присылать на почту:</p>
-          <a href="/" rel="nofollow" className="d-inline-block my-3">
+          <a href="/" rel="nofollow" className="d-inline-block my-3 text-break">
             {email}
           </a>
           <p className="card-text mb-0">

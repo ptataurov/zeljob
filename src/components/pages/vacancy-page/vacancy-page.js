@@ -91,7 +91,10 @@ class VacancyPage extends Component {
   }
 }
 
-const mapStateToProps = state => state
+const mapStateToProps = ({ vacancyList, listLoaded }) => ({
+  vacancyList,
+  listLoaded
+})
 
 const mapDispatchToProps = {
   fetchVacancy

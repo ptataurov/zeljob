@@ -5,15 +5,15 @@
 
 .vacancy__list-item {
   display: flex;
-  align-items: center;
 
   &:before {
+    content: '';
     width: 8px;
     height: 8px;
     margin-right: 16px;
     background-color: #1071ff;
     border-radius: 50%;
-    content: '';
+    transform: translateY(100%);
   }
 
   &:not(:last-child) {

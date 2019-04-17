@@ -1,4 +1,16 @@
-import { SET_LIST_LOADED, UPDATE_SCROLL_TOP_LIST_POSITION } from '../actions'
+import {
+  SET_LIST_LOADED,
+  UPDATE_SCROLL_TOP_LIST_POSITION,
+  VACANCY_LIST_REQUEST,
+  VACANCY_LIST_SUCCESS,
+  VACANCY_PUBLISH_SUCCESS,
+  VACANCY_LIST_FAILURE,
+  UPDATE_CURRENT_PAGE,
+  UPDATE_VACANCY_LIST,
+  SET_VACANCY_COUNT,
+  SET_SEARCH_INPUT,
+  UPDATE_TOTAL_PAGES
+} from '../actions'
 
 const initialState = {
   vacancyList: [],
@@ -20,14 +32,14 @@ const rootReducer = (state = initialState, action) => {
         listLoaded: true
       }
 
-    case 'VACANCY_LIST_REQUEST':
+    case VACANCY_LIST_REQUEST:
       return {
         ...state,
         loading: true,
         error: null
       }
 
-    case 'VACANCY_LIST_SUCCESS':
+    case VACANCY_LIST_SUCCESS:
       return {
         ...state,
         vacancyList: action.payload,
@@ -35,14 +47,14 @@ const rootReducer = (state = initialState, action) => {
         error: null
       }
 
-    case 'VACANCY_PUBLISH_SUCCESS':
+    case VACANCY_PUBLISH_SUCCESS:
       return {
         ...state,
         loading: false,
         error: null
       }
 
-    case 'VACANCY_LIST_FAILURE':
+    case VACANCY_LIST_FAILURE:
       return {
         ...state,
         loading: false,
@@ -55,13 +67,13 @@ const rootReducer = (state = initialState, action) => {
         scrollTopListPosition: action.payload
       }
 
-    case 'UPDATE_CURRENT_PAGE':
+    case UPDATE_CURRENT_PAGE:
       return {
         ...state,
         currentPage: action.payload
       }
 
-    case 'UPDATE_VACANCY_LIST':
+    case UPDATE_VACANCY_LIST:
       return {
         ...state,
         vacancyList: [...state.vacancyList, ...action.payload],
@@ -69,19 +81,19 @@ const rootReducer = (state = initialState, action) => {
         error: null
       }
 
-    case 'SET_VACANCY_COUNT':
+    case SET_VACANCY_COUNT:
       return {
         ...state,
         vacancyCount: action.payload
       }
 
-    case 'SET_SEARCH_INPUT':
+    case SET_SEARCH_INPUT:
       return {
         ...state,
         searchInput: action.payload
       }
 
-    case 'UPDATE_TOTAL_PAGES':
+    case UPDATE_TOTAL_PAGES:
       return {
         ...state,
         totalPages: action.payload

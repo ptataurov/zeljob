@@ -235,8 +235,8 @@ const PublishForm = props => {
           <label>Необходимые навыки</label>
           <ul className="publish-form__list">
             {!skills.length && (
-              <li className="publish-form__list-item">
-                <span className="publish-form__list-item-span">
+              <li className="publish-form__list-item-example">
+                <span className="publish-form__list-item-example-span">
                   Хорошее знание европейской кухни{' '}
                   <span className="text-primary">(пример)</span>
                 </span>

@@ -48,7 +48,7 @@ class HomePage extends Component {
   }
 }
 
-const mapStateToProps = state => state
+const mapStateToProps = ({ listLoaded }) => ({ listLoaded })
 const mapDispatchToProps = {
   fetchVacancyList,
   setListLoaded,
