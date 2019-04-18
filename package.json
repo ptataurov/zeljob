@@ -37,6 +37,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "html-snapshots": "^0.15.4",
     "node-sass": "^4.11.0",
     "stylelint-config-rational-order": "^0.1.0"
   }

@@ -1,10 +1,10 @@
 import {
+  VACANCY_LIST_LOADED,
   SET_LIST_LOADED,
   UPDATE_SCROLL_TOP_LIST_POSITION,
-  VACANCY_LIST_REQUEST,
-  VACANCY_LIST_SUCCESS,
-  VACANCY_PUBLISH_SUCCESS,
-  VACANCY_LIST_FAILURE,
+  FETCH_REQUEST,
+  FETCH_SUCCESS,
+  FETCH_FAILURE,
   UPDATE_CURRENT_PAGE,
   UPDATE_VACANCY_LIST,
   SET_VACANCY_COUNT,
@@ -26,39 +26,43 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_LIST_LOADED:
-      return {
-        ...state,
-        listLoaded: true
-      }
-
-    case VACANCY_LIST_REQUEST:
+    case FETCH_REQUEST:
       return {
         ...state,
         loading: true,
         error: null
       }
 
-    case VACANCY_LIST_SUCCESS:
-      return {
-        ...state,
-        vacancyList: action.payload,
-        loading: false,
-        error: null
-      }
-
-    case VACANCY_PUBLISH_SUCCESS:
+    case FETCH_SUCCESS:
       return {
         ...state,
         loading: false,
         error: null
       }
 
-    case VACANCY_LIST_FAILURE:
+    case FETCH_FAILURE:
       return {
         ...state,
         loading: false,
         error: true
+      }
+
+    case VACANCY_LIST_LOADED:
+      return {
+        ...state,
+        vacancyList: [...action.payload]
+      }
+
+    case SET_LIST_LOADED:
+      return {
+        ...state,
+        listLoaded: action.payload
+      }
+
+    case UPDATE_VACANCY_LIST:
+      return {
+        ...state,
+        vacancyList: [...state.vacancyList, ...action.payload]
       }
 
     case UPDATE_SCROLL_TOP_LIST_POSITION:
@@ -71,14 +75,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPage: action.payload
-      }
-
-    case UPDATE_VACANCY_LIST:
-      return {
-        ...state,
-        vacancyList: [...state.vacancyList, ...action.payload],
-        loading: false,
-        error: null
       }
 
     case SET_VACANCY_COUNT:

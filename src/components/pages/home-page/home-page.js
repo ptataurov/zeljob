@@ -27,7 +27,7 @@ class HomePage extends Component {
 
     if (!listLoaded) {
       fetchVacancyList()
-      setListLoaded()
+      setListLoaded(true)
     }
   }
 

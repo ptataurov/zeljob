@@ -176,6 +176,16 @@ class PublishContainer extends Component {
     }
   }
 
+  resetForm = () => {
+    this.setState({
+      position: '',
+      salary: '',
+      vacancyDesc: '',
+      resps: [],
+      skills: []
+    })
+  }
+
   handleChange = (e, field) => {
     this.setState({
       [field]: e.target.value
@@ -184,7 +194,7 @@ class PublishContainer extends Component {
 
   onSubmit = async e => {
     e.preventDefault()
-    const { validateForm, setModalShow, getVacancy } = this
+    const { validateForm, setModalShow, getVacancy, resetForm } = this
 
     if (validateForm(e.target)) {
       const vacancy = getVacancy(this.state)
@@ -196,6 +206,7 @@ class PublishContainer extends Component {
         id: vacancy.id
       })
 
+      resetForm()
       setModalShow(true)
     }
   }
