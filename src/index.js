@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 import App from './components/app/app'
 import * as serviceWorker from './serviceWorker'
-import { HashRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import 'bootstrap/scss/bootstrap.scss'
 import './assets/scss/common.scss'

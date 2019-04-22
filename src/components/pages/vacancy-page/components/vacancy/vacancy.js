@@ -41,12 +41,12 @@ const Vacancy = props => {
         </div>
         <hr className="my-4" />
         <div className="mb-5">
-          <h6 className="h5 mb-3">О компании</h6>
-          <p className="card-text vacancy-page__p pre-wrap">{aboutCompany}</p>
-        </div>
-        <div className="mb-5">
           <h6 className="h5 mb-3">Описание вакансии</h6>
           <p className="card-text vacancy-page__p pre-wrap">{vacancyDesc}</p>
+        </div>
+        <div className="mb-5">
+          <h6 className="h5 mb-3">О компании</h6>
+          <p className="card-text vacancy-page__p pre-wrap">{aboutCompany}</p>
         </div>
         {Boolean(resps.length) && (
           <div className="mb-5">

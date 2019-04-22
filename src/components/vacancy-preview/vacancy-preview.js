@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './vacancy-preview.scss'
 
+import { truncate } from 'lodash'
+
 const VacancyPreview = ({ vacancy }) => {
   const {
     id,
@@ -27,7 +29,9 @@ const VacancyPreview = ({ vacancy }) => {
           <p className="h6 m-0">{salary}</p>
         </div>
         <hr />
-        <p className="m-0">{vacancyDesc}</p>
+        <p className="m-0">
+          {truncate(vacancyDesc, { length: 250, separator: '...' })}
+        </p>
         <hr />
         <div className="d-flex flex-wrap justify-content-between text-muted">
           {address && <small>{address}</small>}

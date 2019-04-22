@@ -6,7 +6,7 @@ const Header = () => {
     <div className="header app__header">
       <h1 className="h2 font-weight-bold">Работа в Зеленограде.</h1>
       <h2 className="font-weight-normal">
-        Все вакансии Зеленограда в одном месте, найти работу стало проще!
+        Лучшие вакансии Зеленограда в одном месте, найти работу стало проще!
       </h2>
     </div>
   )

@@ -71,13 +71,15 @@ class VacancyPage extends Component {
     const { vacancy } = this.state
 
     if (vacancy) {
-      const { email, position, ...rest } = vacancy
+      const { name, phone, email, position, ...rest } = vacancy
 
       return (
         <Container
           left={<Vacancy {...rest} position={position} />}
           right={
             <VacancyContacts
+              name={name}
+              phone={phone}
               email={email}
               position={position}
               listLoaded={listLoaded}

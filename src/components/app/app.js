@@ -7,7 +7,7 @@ import Footer from '../footer/footer'
 import HomePage from '../pages//home-page/home-page'
 import VacancyPage from '../pages/vacancy-page/vacancy-page'
 import PublishPage from '../pages/publish-page/publish-page'
-import NotFoundPage from '../not-found/not-found'
+import NotFound from '../not-found/not-found'
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
         <Route path="/" exact component={HomePage} />
         <Route path="/vacancy/:id" component={VacancyPage} />
         <Route path="/publish" component={PublishPage} />
-        <Route component={NotFoundPage} />
+        <Route component={NotFound} />
       </Switch>
       <Footer />
     </div>

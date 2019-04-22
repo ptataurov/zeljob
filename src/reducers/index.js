@@ -50,7 +50,7 @@ const rootReducer = (state = initialState, action) => {
     case VACANCY_LIST_LOADED:
       return {
         ...state,
-        vacancyList: [...action.payload]
+        vacancyList: action.payload
       }
 
     case SET_LIST_LOADED:

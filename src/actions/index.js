@@ -3,7 +3,8 @@ import 'firebase/firestore'
 import algoliasearch from 'algoliasearch'
 
 const client = algoliasearch('NVB3R0X6NL', '99ae420fbacd7e181b846392989eee03')
-const index = client.initIndex('zeljob_vacancies')
+
+const initAlgolia = () => client.initIndex('zeljob_vacancies')
 
 export const FETCH_REQUEST = 'FETCH_REQUEST'
 const fetchRequest = () => ({
@@ -25,6 +26,7 @@ export const onSearch = (e, str) => async dispatch => {
   e.preventDefault()
   dispatch(fetchRequest())
   try {
+    const index = initAlgolia()
     const res = await index.search({
       query: str
     })
@@ -87,6 +89,7 @@ export const setListLoaded = bool => ({
 export const fetchNextPage = (str, page) => async dispatch => {
   dispatch(fetchRequest())
   try {
+    const index = initAlgolia()
     const res = await index.search({
       query: str,
       page
@@ -112,6 +115,7 @@ export const fetchVacancyList = () => async dispatch => {
   dispatch(fetchRequest())
 
   try {
+    const index = initAlgolia()
     const res = await index.search()
     const vacancyList = await res.hits
 

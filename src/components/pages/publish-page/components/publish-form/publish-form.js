@@ -30,7 +30,9 @@ const PublishForm = props => {
     respValue,
     skillValue,
     resps,
-    skills
+    skills,
+    name,
+    phone
   } = props
 
   return (
@@ -58,7 +60,7 @@ const PublishForm = props => {
           <div className="form-group col-md-6 mb-0">
             <label>Сайт</label>
             <input
-              type="text"
+              type="url"
               className="form-control"
               placeholder="cafe-anderson.ru"
               value={site}
@@ -100,9 +102,8 @@ const PublishForm = props => {
             <label>Зарплата</label>
             <MaskedInput
               mask={createNumberMask()}
-              type="text"
               className="form-control"
-              placeholder="40 000р."
+              placeholder="По договоренности"
               value={salary}
               onChange={e => handleChange(e, 'salary')}
             />
@@ -175,7 +176,7 @@ const PublishForm = props => {
           </div>
         </div>
         <div className="form-row mb-2">
-          <div className="form-group col-md-6 mb-0">
+          <div className="form-group col-md-6 mb-md-0">
             <label>Занятость</label>
             <select
               className="custom-select"
@@ -204,7 +205,7 @@ const PublishForm = props => {
       </PublishFormCard>
       <PublishFormCard title="Информация о сотруднике">
         <div className="form-row mb-5">
-          <div className="form-group col-md-6 mb-0">
+          <div className="form-group col-md-6 mb-md-0">
             <label>Опыт работы</label>
             <select
               className="custom-select"
@@ -277,9 +278,53 @@ const PublishForm = props => {
       </PublishFormCard>
       <PublishFormCard title="Контакты">
         <div className="form-row mb-2">
-          <p className="flex-grow-1 text-center mb-2">
-            Укажите почту на которую будут приходить резюме
-          </p>
+          <div className="form-group col-md-6 mb-1 mb-md-2">
+            <label>Ваше имя</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Анастасия Иванова"
+              value={name}
+              onChange={e => handleChange(e, 'name')}
+              required
+            />
+            <small className="form-text text-muted text-right">
+              Обязательное поле
+            </small>
+          </div>
+          <div className="form-group col-md-6 mb-1 mb-md-2">
+            <label>Телефон</label>
+            <MaskedInput
+              mask={[
+                '+',
+                '7',
+                ' ',
+                '(',
+                /[1-9]/,
+                /\d/,
+                /\d/,
+                ')',
+                ' ',
+                /\d/,
+                /\d/,
+                /\d/,
+                '-',
+                /\d/,
+                /\d/,
+                '-',
+                /\d/,
+                /\d/
+              ]}
+              className="form-control"
+              placeholder="+7"
+              value={phone}
+              onChange={e => handleChange(e, 'phone')}
+              required
+            />
+            <small className="form-text text-muted text-right">
+              Обязательное поле
+            </small>
+          </div>
           <div className="form-group col-md-6 mb-0">
             <label>Почта</label>
             <input
@@ -334,7 +379,9 @@ PublishForm.propTypes = {
   respValue: PropTypes.string.isRequired,
   skillValue: PropTypes.string.isRequired,
   resps: PropTypes.array.isRequired,
-  skills: PropTypes.array.isRequired
+  skills: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired
 }
 
 export default PublishForm

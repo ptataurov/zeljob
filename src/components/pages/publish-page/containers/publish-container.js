@@ -79,6 +79,8 @@ class PublishContainer extends Component {
     termPublish: '90',
     experience: 'не нужен',
     education: 'не важно',
+    name: '',
+    phone: '',
     email: '',
     respValue: '',
     skillValue: '',
