@@ -6,7 +6,7 @@ import App from './components/app/app'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import 'bootstrap/scss/bootstrap.scss'
+import './assets/scss/libs/bootstrap/bootstrap.scss'
 import './assets/scss/common.scss'
 
 import * as fb from 'firebase/app'

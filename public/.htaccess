@@ -1,11 +1,9 @@
-RequestHeader set X-Prerender-Token "8XMveLJmZLHgaxRE1uMU"
-
 RewriteEngine On
 
 RewriteCond %{HTTP_USER_AGENT} googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator [NC,OR]
 RewriteCond %{QUERY_STRING} _escaped_fragment_
 
-RewriteRule ^$ http://zeljob.ru/snapshot.html [QSA,L]
+RewriteRule ^$ http://zeljob.ru/snap/index.html [QSA,L]
 
 Options -MultiViews
 RewriteCond %{REQUEST_FILENAME} !-f

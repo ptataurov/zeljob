@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "algoliasearch": "^3.32.1",
-    "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "firebase": "^5.9.4",
     "lodash": "^4.17.11",
@@ -23,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-app-rewired build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -38,6 +37,8 @@
   ],
   "devDependencies": {
     "node-sass": "^4.11.0",
+    "prerender-spa-plugin": "^3.4.0",
+    "react-app-rewired": "^2.1.1",
     "stylelint-config-rational-order": "^0.1.0"
   }
 }
