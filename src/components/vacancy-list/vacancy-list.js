@@ -9,10 +9,10 @@ import Spinner from '../spinner/spinner'
 import { ReactComponent as FindEmoji } from './find-emoji.svg'
 
 const getVacancyCountStr = count => {
-  const lastDigit = Number(count.toString().slice(-1))
+  const digit = count > 20 ? Number(count.toString().slice(-1)) : count
 
-  if (lastDigit === 1) return `${count} вакансия`
-  if (lastDigit <= 4 && lastDigit !== 0) return `${count} вакансии`
+  if (digit === 1) return `${count} вакансия`
+  if (digit <= 4 && digit !== 0) return `${count} вакансии`
 
   return `${count} вакансий`
 }

@@ -11,6 +11,8 @@ const fetchRequest = () => ({
   type: FETCH_REQUEST
 })
 
+
+
 export const FETCH_SUCCESS = 'FETCH_SUCCESS'
 const fetchSuccess = vacancyList => ({
   type: FETCH_SUCCESS,
