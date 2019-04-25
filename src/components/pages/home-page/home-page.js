@@ -32,8 +32,6 @@ class HomePage extends Component {
   }
 
   render() {
-    console.log(this.props)
-
     const { onSearch } = this.props
 
     return (
