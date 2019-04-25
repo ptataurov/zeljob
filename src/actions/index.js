@@ -1,28 +1,17 @@
 import * as fb from 'firebase/app'
 import 'firebase/firestore'
 import algoliasearch from 'algoliasearch'
+import { createAction } from 'redux-actions'
 
 const client = algoliasearch('NVB3R0X6NL', '99ae420fbacd7e181b846392989eee03')
 
 const initAlgolia = () => client.initIndex('zeljob_vacancies')
 
-export const FETCH_REQUEST = 'FETCH_REQUEST'
-const fetchRequest = () => ({
-  type: FETCH_REQUEST
-})
+export const fetchRequest = createAction('FETCH_REQUEST')
 
+export const fetchSuccess = createAction('FETCH_SUCCESS')
 
-
-export const FETCH_SUCCESS = 'FETCH_SUCCESS'
-const fetchSuccess = vacancyList => ({
-  type: FETCH_SUCCESS,
-  payload: vacancyList
-})
-
-export const FETCH_FAILURE = 'FETCH_FAILURE'
-const fetchFailure = () => ({
-  type: FETCH_FAILURE
-})
+export const fetchFailure = createAction('FETCH_FAILURE')
 
 export const onSearch = (e, str) => async dispatch => {
   e.preventDefault()
@@ -46,47 +35,15 @@ export const onSearch = (e, str) => async dispatch => {
   }
 }
 
-export const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE'
-const updateCurrentPage = page => ({
-  type: UPDATE_CURRENT_PAGE,
-  payload: page
-})
-
-export const UPDATE_SCROLL_TOP_LIST_POSITION = 'UPDATE_SCROLL_TOP_LIST_POSITION'
-export const updateScrollTopListPosition = top => ({
-  type: UPDATE_SCROLL_TOP_LIST_POSITION,
-  payload: top
-})
-
-export const UPDATE_TOTAL_PAGES = 'UPDATE_TOTAL_PAGES'
-const updateTotalPages = page => ({
-  type: UPDATE_TOTAL_PAGES,
-  payload: page
-})
-
-export const UPDATE_VACANCY_LIST = 'UPDATE_VACANCY_LIST'
-const updateVacancyList = vacancyList => ({
-  type: UPDATE_VACANCY_LIST,
-  payload: vacancyList
-})
-
-export const SET_VACANCY_COUNT = 'SET_VACANCY_COUNT'
-const setVacancyCount = count => ({
-  type: SET_VACANCY_COUNT,
-  payload: count
-})
-
-export const SET_SEARCH_INPUT = 'SET_SEARCH_INPUT'
-const setSearchInput = str => ({
-  type: SET_SEARCH_INPUT,
-  payload: str
-})
-
-export const SET_LIST_LOADED = 'SET_LIST_LOADED'
-export const setListLoaded = bool => ({
-  type: SET_LIST_LOADED,
-  payload: bool
-})
+export const updateCurrentPage = createAction('UPDATE_CURRENT_PAGE')
+export const updateScrollTopListPosition = createAction(
+  'UPDATE_SCROLL_TOP_LIST_POSITION'
+)
+export const updateTotalPages = createAction('UPDATE_TOTAL_PAGES')
+export const updateVacancyList = createAction('UPDATE_VACANCY_LIST')
+export const setVacancyCount = createAction('SET_VACANCY_COUNT')
+export const setSearchInput = createAction('SET_SEARCH_INPUT')
+export const setListLoaded = createAction('SET_LIST_LOADED')
 
 export const fetchNextPage = (str, page) => async dispatch => {
   dispatch(fetchRequest())
@@ -99,7 +56,6 @@ export const fetchNextPage = (str, page) => async dispatch => {
 
     const vacancyList = await res.hits
     dispatch(updateCurrentPage(page + 1))
-
     dispatch(updateVacancyList(vacancyList))
     dispatch(fetchSuccess())
   } catch (e) {
@@ -107,11 +63,7 @@ export const fetchNextPage = (str, page) => async dispatch => {
   }
 }
 
-export const VACANCY_LIST_LOADED = 'VACANCY_LIST_LOADED'
-const vacancyListLoaded = vacancyList => ({
-  type: VACANCY_LIST_LOADED,
-  payload: vacancyList
-})
+export const vacancyListLoaded = createAction('VACANCY_LIST_LOADED')
 
 export const fetchVacancyList = () => async dispatch => {
   dispatch(fetchRequest())

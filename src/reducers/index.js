@@ -1,17 +1,5 @@
-import {
-  VACANCY_LIST_LOADED,
-  SET_LIST_LOADED,
-  UPDATE_SCROLL_TOP_LIST_POSITION,
-  FETCH_REQUEST,
-  FETCH_SUCCESS,
-  FETCH_FAILURE,
-  UPDATE_CURRENT_PAGE,
-  UPDATE_VACANCY_LIST,
-  SET_VACANCY_COUNT,
-  SET_SEARCH_INPUT,
-  UPDATE_TOTAL_PAGES
-} from '../actions'
-
+import { handleActions } from 'redux-actions'
+import * as actions from '../actions'
 const initialState = {
   vacancyList: [],
   listLoaded: false,
@@ -24,80 +12,67 @@ const initialState = {
   scrollTopListPosition: 0
 }
 
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: null
-      }
+const rootReducer = handleActions(
+  {
+    [actions.fetchRequest]: state => ({
+      ...state,
+      loading: true,
+      error: null
+    }),
 
-    case FETCH_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        error: null
-      }
+    [actions.fetchSuccess]: state => ({
+      ...state,
+      loading: false,
+      error: null
+    }),
 
-    case FETCH_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: true
-      }
+    [actions.fetchFailure]: state => ({
+      ...state,
+      loading: false,
+      error: true
+    }),
 
-    case VACANCY_LIST_LOADED:
-      return {
-        ...state,
-        vacancyList: action.payload
-      }
+    [actions.vacancyListLoaded]: (state, { payload }) => ({
+      ...state,
+      vacancyList: payload
+    }),
 
-    case SET_LIST_LOADED:
-      return {
-        ...state,
-        listLoaded: action.payload
-      }
+    [actions.setListLoaded]: (state, { payload }) => ({
+      ...state,
+      listLoaded: payload
+    }),
 
-    case UPDATE_VACANCY_LIST:
-      return {
-        ...state,
-        vacancyList: [...state.vacancyList, ...action.payload]
-      }
+    [actions.updateVacancyList]: (state, { payload }) => ({
+      ...state,
+      vacancyList: [...state.vacancyList, ...payload]
+    }),
 
-    case UPDATE_SCROLL_TOP_LIST_POSITION:
-      return {
-        ...state,
-        scrollTopListPosition: action.payload
-      }
+    [actions.updateScrollTopListPosition]: (state, { payload }) => ({
+      ...state,
+      scrollTopListPosition: payload
+    }),
 
-    case UPDATE_CURRENT_PAGE:
-      return {
-        ...state,
-        currentPage: action.payload
-      }
+    [actions.updateCurrentPage]: (state, { payload }) => ({
+      ...state,
+      currentPage: payload
+    }),
 
-    case SET_VACANCY_COUNT:
-      return {
-        ...state,
-        vacancyCount: action.payload
-      }
+    [actions.setVacancyCount]: (state, { payload }) => ({
+      ...state,
+      vacancyCount: payload
+    }),
 
-    case SET_SEARCH_INPUT:
-      return {
-        ...state,
-        searchInput: action.payload
-      }
+    [actions.setSearchInput]: (state, { payload }) => ({
+      ...state,
+      searchInput: payload
+    }),
 
-    case UPDATE_TOTAL_PAGES:
-      return {
-        ...state,
-        totalPages: action.payload
-      }
-
-    default:
-      return state
-  }
-}
+    [actions.updateTotalPages]: (state, { payload }) => ({
+      ...state,
+      totalPages: payload
+    })
+  },
+  initialState
+)
 
 export default rootReducer
